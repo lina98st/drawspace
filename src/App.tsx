@@ -150,66 +150,68 @@ function App() {
       </header>
 
       <section className="workspace">
-        <div className="toolbar">
-          <label className="control">
-            <span>Color</span>
+        <div className="canvas-wrapper">
+          <div className="toolbar">
+            <label className="control">
+              <span>Color</span>
 
-            <input
-              type="color"
-              value={color}
-              disabled={isEraser}
-              onChange={(event) => setColor(event.target.value)}
+              <input
+                type="color"
+                value={color}
+                disabled={isEraser}
+                onChange={(event) => setColor(event.target.value)}
+              />
+            </label>
+
+            <label className="control brush-control">
+              <span>Brush size: {brushSize}px</span>
+
+              <input
+                type="range"
+                min="1"
+                max="50"
+                value={brushSize}
+                onChange={(event) => setBrushSize(Number(event.target.value))}
+              />
+            </label>
+
+            <button
+              type="button"
+              className={!isEraser ? "active" : ""}
+              onClick={() => setIsEraser(false)}
+            >
+              Brush
+            </button>
+
+            <button
+              type="button"
+              className={isEraser ? "active" : ""}
+              onClick={() => setIsEraser(true)}
+            >
+              Eraser
+            </button>
+
+            <button type="button" onClick={clearCanvas}>
+              Clear
+            </button>
+
+            <button type="button" onClick={exportCanvas}>
+              Export PNG
+            </button>
+          </div>
+
+          <div className="canvas-container">
+            <canvas
+              ref={canvasRef}
+              width={1200}
+              height={800}
+              onPointerDown={startDrawing}
+              onPointerMove={draw}
+              onPointerUp={stopDrawing}
+              onPointerCancel={stopDrawing}
+              className="drawing-canvas"
             />
-          </label>
-
-          <label className="control brush-control">
-            <span>Brush size: {brushSize}px</span>
-
-            <input
-              type="range"
-              min="1"
-              max="50"
-              value={brushSize}
-              onChange={(event) => setBrushSize(Number(event.target.value))}
-            />
-          </label>
-
-          <button
-            type="button"
-            className={!isEraser ? "active" : ""}
-            onClick={() => setIsEraser(false)}
-          >
-            Brush
-          </button>
-
-          <button
-            type="button"
-            className={isEraser ? "active" : ""}
-            onClick={() => setIsEraser(true)}
-          >
-            Eraser
-          </button>
-
-          <button type="button" onClick={clearCanvas}>
-            Clear
-          </button>
-
-          <button type="button" onClick={exportCanvas}>
-            Export PNG
-          </button>
-        </div>
-
-        <div className="canvas-container">
-          <canvas
-            ref={canvasRef}
-            width={1200}
-            height={800}
-            onPointerDown={startDrawing}
-            onPointerMove={draw}
-            onPointerUp={stopDrawing}
-            onPointerCancel={stopDrawing}
-            className="drawing-canvas"
-          />
+          </div>
         </div>
       </section>
     </main>
