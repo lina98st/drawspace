@@ -1,0 +1,117 @@
+.app {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f4f4f5;
+  color: #18181b;
+}
+
+.header {
+  width: min(1200px, 100%);
+  margin: 0 auto 24px;
+}
+
+.header h1 {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.header p {
+  color: #71717a;
+}
+
+.workspace {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.brush-control {
+  min-width: 220px;
+}
+
+input[type="color"] {
+  width: 42px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 16px;
+  border: 1px solid #d4d4d8;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #18181b;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f4f4f5;
+}
+
+button.active {
+  background: #18181b;
+  color: #ffffff;
+  border-color: #18181b;
+}
+
+.canvas-container {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 8%);
+}
+
+.drawing-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  background: #ffffff;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 16px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .control,
+  button {
+    width: 100%;
+  }
+}
